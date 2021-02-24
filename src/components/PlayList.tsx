@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import music from '../images/music.jpeg';
+import music from '../images/noimage.jpeg';
 
 const PlayList = ({playlist}: any) => {
 	return (
