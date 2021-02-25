@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import AlbumsList from './AlbumsList';
 import ArtistsList from './ArtistsList';
-import Tracks from './Tracks';
+import TracksList from './TracksList';
 import PlayList from './PlayList';
 
 interface ISearchResult {
@@ -88,7 +88,7 @@ const SearchResult = (props: ISearchResult) => {
 				{artists && <ArtistsList artists={artists}/>}
 			</div>
 			<div className={`${selectedCategory === 'tracks' ? '' : 'hide'}`}>
-				{tracks && <Tracks tracks={tracks}/>}
+				{tracks && <TracksList tracks={tracks}/>}
 			</div>
 			<div className={`${selectedCategory === 'playlist' ? '' : 'hide'}`}>
 				{playlist && <PlayList playlist={playlist}/>}

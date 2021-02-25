@@ -2,11 +2,11 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import music from '../images/noimage.jpeg';
 
-const Tracks = ({tracks}: any) => {
+const TracksList = ({tracks}: any) => {
 	return (
 		<>
 			{Object.keys(tracks).length > 0 && (
-				<div className="playlist">
+				<div className="tracks">
 					{tracks.items.map((item: any, index: number) => {
 						return (
 							<React.Fragment key={index}>
@@ -39,4 +39,4 @@ const Tracks = ({tracks}: any) => {
 	);
 };
 
-export default Tracks;
+export default TracksList;
