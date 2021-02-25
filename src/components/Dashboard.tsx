@@ -28,7 +28,7 @@ const Dashboard = (props: IDashboard) => {
 	const [selectedCategory, setSelectedCategory] = useState('albums');
 	const {isValidSession, history} = props;
 
-	const handleSearch = (searchTerm: string | number | boolean) => {
+	const handleSearch = (searchTerm: string) => {
 		if (isValidSession()) {
 			setIsLoading(true);
 			props.dispatch(initiateGetResult(searchTerm)).then(() => {

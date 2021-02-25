@@ -10,7 +10,13 @@ const AppRouter = () => {
 
 	const isValidSession = () => {
 		const currentTime = new Date().getTime();
-		return currentTime < parseInt(expiryTime);
+		const isValid = currentTime < parseInt(expiryTime);
+
+		if (!isValid) {
+			sessionStorage.clear();
+		}
+
+		return isValid;
 	};
 
 	useEffect(() => {

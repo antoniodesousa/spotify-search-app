@@ -50,11 +50,21 @@ export const addPlaylist = (playlists: any) => ({
 	playlists
 });
 
-export const initiateGetResult = (searchTerm: string | number | boolean) => {
+export const initiateGetResult = (searchTerm: string) => {
 	return async (dispatch: (arg0: { type: string; albums?: any; artists?: any; playlists?: any; }) => void) => {
 		try {
 			const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(searchTerm)}&type=album,playlist,artist,track`;
-			const result = await get(API_URL);
+			const searchKey = searchTerm.replace(/\s/g, "");
+			const prevResult = sessionStorage.getItem(searchKey);
+			let result;
+
+			if (prevResult) {
+				result = JSON.parse(prevResult);
+			} else {
+				result = await get(API_URL);
+				sessionStorage.setItem(searchKey, JSON.stringify(result));
+			}
+
 			const {albums, artists, tracks, playlists} = result;
 			dispatch(setAlbums(albums));
 			dispatch(setArtists(artists));
