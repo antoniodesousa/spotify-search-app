@@ -54,7 +54,7 @@ export const initiateGetResult = (searchTerm: string) => {
 	return async (dispatch: (arg0: { type: string; albums?: any; artists?: any; playlists?: any; }) => void) => {
 		try {
 			const API_URL = `https://api.spotify.com/v1/search?query=${encodeURIComponent(searchTerm)}&type=album,playlist,artist,track`;
-			const searchKey = searchTerm.replace(/\s/g, "");
+			const searchKey = searchTerm.replace(/\s/g, "").toLowerCase();
 			const prevResult = sessionStorage.getItem(searchKey);
 			let result;
 
